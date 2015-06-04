@@ -1,6 +1,6 @@
 This file consists of description about the variables and other information used in the script **run_analysis.R**   
 
-Background information
+### Background information
 
 Reading the background information about the course project helps. It can be obtained [here](http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones)
 
@@ -57,7 +57,7 @@ The dataset for this project can be download [here](https://d396qusza40orc.cloud
 	- dim = 180 x 81
 	
 	
-	
+prepared by Choo-Yee Ting
 	
 	
 	
