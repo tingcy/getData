@@ -1,5 +1,3 @@
-# CodeBook for run_analysis.R
-
 This file describes at detailed level how each step in the run_analysis.R script works:
 
 ### step-1: merges the training and the test sets to form a new dataset
