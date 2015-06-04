@@ -1,16 +1,48 @@
-# course project - Getting and Cleaning
-This file describes at high-level how run_analysis.R script functions.
+# CodeBook for run_analysis.R
 
-- Download the [dataset](https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip) for this course project and unzip it. 
-- Place the dataset into a folder named dataset.
-- The run_analysis.R file must be outside the **dataset** folder.
-- Load the run_analysis.R file into your RStudio.
-- After executing the R file, you shall notice that 2 files apprear in same directory as you place the R file.
-     - cleanDataSet_columnmean.txt
-     - cleanDataset.txt
-- You may want to view the 2 files by using the command:     
-     df1<-read.table("cleanDataset_columnmean.txt")   
-     df2<-read.table("cleanDataset.txt")   
-   
+This file describes at detailed level how each step in the run_analysis.R script works:
+
+### step-1: merges the training and the test sets to form a new dataset
+- the main objective of step 1 is to combine dataset from the train and test dataset.
+- the train data is divided into three files:
+     - X_train.txt
+     - y_train.txt
+     - subject_train.txt
+- the test data is divided into three files:
+     - X_test.txt
+     - y_test.txt
+     - subject_test.txt
+- there are all together 30 subjects in the research work.
+- to read the text files, the command read.table() is used.
+- the combineData variable has a dimension of 10299 x 561.
+- the combineLabel variable has a dimension of 10299 x 1.
+- the combineSubject variable has a dimension of 10299 x 1.
+- make sure that the working directory is set correctly and the working folder name for the dateset is "dataset".
+
+### step-2: Extracts only the measurements on the mean and standard deviation for each measurement.
+
+- the main objective of this step is to extract features with the word "mean" and "std" only.
+- the functions used to do the extractions are "grep" and "gsub".
+- the first task is to read the features.txt file.
+- the selected features are stored in featureSelected variable.
+
+### Step-3: Uses descriptive activity names to name the activities in the data set
+
+- the main objective of this step is to map the activity labels to their actual activity names.
+- the activity labels are stored in the file named activity_labels.txt
+- the activity label are then replaced into combineLabel.
+
+### Step-4: Appropriately labels the data set with descriptive variable names. 
+
+- the main objective of this step is to name the column names correctly.
+- there are three main renaming tasks; one to each combined data, namely, combineData_feature, combineLabel, combineSubject.
+- after renaming, the clean dataset is output to a file name "cleanDataset.txt"
+
+### Step-5: From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
+
+- the last step is to get the aggregated information from the combined dataset.
+- there are two approaches: dplyr, data.table
+- finally, the output of step 5 is a file named "cleanDataSet_columnmean.txt"
+
 
 prepared by Choo-Yee Ting
